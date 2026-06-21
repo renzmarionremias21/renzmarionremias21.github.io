@@ -308,14 +308,20 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Masonry JS -->
-        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <!-- imagesLoaded JS -->
+        <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!-- Custom Script -->
         <script>
             $(document).ready(() => {
-                $('.row').isotope({
-                    itemSelector: '.col-md-4',
+                let row = $('.row').imagesLoaded( function() {
+                    // Initialize Masonry only after all images have loaded
+                    row.masonry({
+                        itemSelector: '.col-md-4',
+                        percentPosition: true
+                    });
                 });
             });
         </script>
